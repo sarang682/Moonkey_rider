@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="spinner_address_type">
+        <item>지번 주소</item>
+        <item>도로명 주소</item>
+    </string-array>
+
+    <string-array name="spinner_liceses">
+        <item>도보</item>
+        <item>자전거</item>
+        <item>킥보드</item>
+        <item>오토바이</item>
+        <item>자동차</item>
+    </string-array>
+
+</resources>
