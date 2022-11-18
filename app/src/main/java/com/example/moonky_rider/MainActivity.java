@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ImageView openDrawer, modify, license,history, accept, question;
     private Button logout;
-    private TextView address;
+    private TextView address, text_color;
     Switch sw;
 
     //탭레이아웃
@@ -65,14 +65,15 @@ public class MainActivity extends AppCompatActivity {
 
         //스위치(운행중/운행종료)
         sw=findViewById(R.id.sw);
+        text_color=findViewById(R.id.rider_state);
         sw.setOnCheckedChangeListener(new Switch.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
                 if(isChecked){
-
+                    text_color.setTextColor(Color.rgb(255,0,0));
                 }else{
-
+                    text_color.setTextColor(Color.rgb(0,0,0));
                 }
             }
         });
