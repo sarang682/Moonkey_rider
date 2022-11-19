@@ -3,6 +3,7 @@
     package="com.example.moonky_rider">
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,6 +11,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Moongky_rider">
+        <activity
+            android:name=".OngoingActivity"
+            android:exported="true" />
+        <activity
+            android:name=".AcceptActivity"
+            android:exported="true" />
+        <activity
+            android:name=".EditAccountActivity"
+            android:exported="true" />
+        <activity
+            android:name=".MyPageActivity"
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

@@ -1,5 +1,6 @@
 package com.example.moonky_rider;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -37,10 +38,10 @@ public class OngoingFragment extends Fragment {
 
         items = new ArrayList<Delivery>();
         //목적지 요금(int) 가게이름 가게주소
-        items.add(new Delivery("유성구 초록아파트 1123동",6000,"오천사치킨","대구 신매동"));
-        items.add(new Delivery("수성구 욱수동 파랑아파트 123동 111호",8000,"bbq","대구 사월동 123"));
-        items.add(new Delivery("수성구 사월동 한일유앤 111동~~",10000,"떡볶이집","주소"));
-        items.add(new Delivery("진행중-배달지 주소",20000,"진행중-가게이름","진행중-주소"));
+        items.add(new Delivery("유성구 초록아파트 1123동",6000,"오천사치킨","대구 신매동","문앞에 두고 문자해주세요","01012345678","01098765432"));
+        items.add(new Delivery("수성구 욱수동 파랑아파트 123동 111호",8000,"bbq","대구 사월동 123","문앞에 두고 문자해주세요","01012345678","01098765432"));
+        items.add(new Delivery("수성구 사월동 한일유앤 111동~~",10000,"떡볶이집","주소","문앞에 두고 문자해주세요","01012345678","01098765432"));
+        items.add(new Delivery("진행중-배달지 주소",20000,"진행중-가게이름","진행중-주소","문앞에 두고 문자해주세요","01012345678","01098765432"));
         adapter=new OngoingFragment.Adapter(items);
         listView.setAdapter(adapter);
 
@@ -48,12 +49,9 @@ public class OngoingFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 Delivery item=(Delivery) adapter.getItem(position);
-//                Toast.makeText(getActivity().getApplicationContext(),item.getName(), Toast.LENGTH_SHORT).show();
-//                Intent intent=new Intent(getActivity().getApplicationContext(),CartActivity.class);
-//                intent.putExtra("menu",item.getName());
-//                intent.putExtra("price",item.getPrice());
-//                intent.putExtra("comment",item.getComment());
-//                startActivity(intent);
+                Intent intent=new Intent(getActivity().getApplicationContext(),OngoingActivity.class);
+                intent.putExtra("deliveryItem",item);
+                startActivity(intent);
             }
         });
     }

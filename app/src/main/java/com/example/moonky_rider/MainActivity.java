@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
 
@@ -147,6 +149,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });*/
 
+
         //슬라이드 메뉴
         final DrawerLayout drawerLayout= (DrawerLayout) findViewById(R.id.drawerLayout);
         final View drawerView =findViewById(R.id.ll_drawer);
@@ -178,6 +181,16 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        //마이페이지
+        linearLayout=findViewById(R.id.linearLayout5);
+        linearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(MainActivity.this,MyPageActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
         //면허 관리
         license.setOnClickListener(new View.OnClickListener() {

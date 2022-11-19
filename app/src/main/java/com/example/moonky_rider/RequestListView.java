@@ -30,7 +30,7 @@ public class RequestListView extends LinearLayout {
         text_destination = (TextView) findViewById(R.id.request_destination);
     }
     public void setText_fee(String fee) {
-        text_fee.setText("도착지 : "+fee);
+        text_fee.setText("배달료 : "+fee);
     }
-    public void setText_destination(String destination){ text_destination.setText("배달료 : "+destination+"원");}
+    public void setText_destination(String destination){ text_destination.setText("도착지 : "+destination+"원");}
 }

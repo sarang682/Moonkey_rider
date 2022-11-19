@@ -40,22 +40,20 @@ public class RequestFragment extends Fragment {
         items = new ArrayList<Delivery>();
         adapter=new RequestFragment.Adapter(items);
         //목적지 요금(int) 가게이름 가게주소
-        items.add(new Delivery("경상북도 대동 133",6000,"오천사치킨","대구 신매동"));
-        items.add(new Delivery("경상북도 사동 사랑으로 103동",5000,"bbq","대구 사월동 123"));
-        items.add(new Delivery("수성구 사월동 한일유앤 111동~~",9000,"떡볶이집","주소"));
+        items.add(new Delivery("경상북도 대동 133",6000,"오천사치킨","대구 신매동","문앞에 두고 문자해주세요","01012345678","01098765432"));
+        items.add(new Delivery("경상북도 사동 사랑으로 103동",5000,"bbq","대구 사월동 123","문앞에 두고 문자해주세요","01012345678","01098765432"));
+        items.add(new Delivery("수성구 사월동 한일유앤 111동~~",9000,"떡볶이집","주소","문앞에 두고 문자해주세요","01012345678","01098765432"));
 //        items.add(new Delivery("메뉴4","12000","메뉴4 코멘트"));
         listView.setAdapter(adapter);
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() { //클릭시 카트에 담김
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 Delivery item=(Delivery) adapter.getItem(position);
-//                Toast.makeText(getActivity().getApplicationContext(),item.getName(), Toast.LENGTH_SHORT).show();
-//                Intent intent=new Intent(getActivity().getApplicationContext(),CartActivity.class);
-//                intent.putExtra("menu",item.getName());
-//                intent.putExtra("price",item.getPrice());
-//                intent.putExtra("comment",item.getComment());
-//                startActivity(intent);
+//                Toast.makeText(getActivity().getApplicationContext(),item.getDestination(), Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(getActivity().getApplicationContext(),AcceptActivity.class);
+                intent.putExtra("deliveryItem",item);
+                startActivity(intent);
             }
         });
     }
