@@ -9,9 +9,8 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 public class LicenseListView extends LinearLayout {
-    TextView text_price;
+    TextView text_date;
     TextView text_num;
-    TextView text_address;
 
 
     public LicenseListView(Context context) {
@@ -29,14 +28,13 @@ public class LicenseListView extends LinearLayout {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.view_licneselist, this, true);
         text_num = (TextView) findViewById(R.id.tv_num);
-        text_address = (TextView) findViewById(R.id.tv_address2);
-        text_price = (TextView) findViewById(R.id.tv_price);
+        text_date = (TextView) findViewById(R.id.tv_date);
     }
     public void setNum(String num) {
         text_num.setText("식별번호 : "+num);
     }
     public void setDate(String date){
-        text_num.setText("발급일자: "+date);
+        text_date.setText("발급일자: "+date);
     }
 
 }
