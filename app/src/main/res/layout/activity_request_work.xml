@@ -27,13 +27,13 @@
             android:id="@+id/tab_Item1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="승인" />
-
+            android:text="승인대기" />
+<!--
         <com.google.android.material.tabs.TabItem
             android:id="@+id/tab_Item2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="승인대기" />
+            android:text="승인대기" />-->
 
         <com.google.android.material.tabs.TabItem
             android:id="@+id/tab_Item3"
