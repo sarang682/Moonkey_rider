@@ -23,7 +23,7 @@ public class MyPageActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_my_page);
 
-//        my_licenses = findViewById(R.id.my_licenses);
+        my_licenses = findViewById(R.id.my_licenses);
         modify = findViewById(R.id.modify);
 //
 //        name = findViewById(R.id.rider_name);
@@ -34,13 +34,13 @@ public class MyPageActivity extends AppCompatActivity {
 //        spinner = findViewById(R.id.spinner_address_type);
 //
 //
-//        my_licenses.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(getApplicationContext(), LicenseListActivity.class);
-//                startActivity(intent);
-//            }
-//        });
+        my_licenses.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), LicenseListActivity.class);
+                startActivity(intent);
+            }
+        });
         modify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
