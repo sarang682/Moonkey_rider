@@ -28,23 +28,32 @@
             app:srcCompat="@drawable/ic_baseline_refresh_24" />
     </androidx.appcompat.widget.Toolbar>
 
-    <ListView
-        android:id="@+id/delivery_lv"
-        android:layout_width="match_parent"
-        android:layout_height="621dp" />
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="560dp"
+        android:layout_weight="1">
+
+        <ListView
+            android:id="@+id/delivery_lv"
+            android:layout_width="match_parent"
+            android:layout_height="621dp" />
+
+    </ScrollView>
+
 
     <LinearLayout
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="210">
+        android:layout_weight="1">
 
         <Button
             android:id="@+id/make_license"
-            android:text="면허 등록"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:layout_marginBottom="5dp"/>
+            android:layout_height="54dp"
+            android:layout_weight="1"
+            android:layout_marginBottom="5dp"
+            android:text="면허 등록" />
 
     </LinearLayout>
 </LinearLayout>
