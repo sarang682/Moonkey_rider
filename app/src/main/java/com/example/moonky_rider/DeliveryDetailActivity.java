@@ -8,6 +8,6 @@ public class DeliveryDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_acceptorder);
+        setContentView(R.layout.activity_ongoing);
     }
 }
