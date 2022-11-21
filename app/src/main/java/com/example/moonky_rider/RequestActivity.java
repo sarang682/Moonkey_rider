@@ -1,4 +1,4 @@
-package com.example.moongky_rider;
+package com.example.moonky_rider;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
