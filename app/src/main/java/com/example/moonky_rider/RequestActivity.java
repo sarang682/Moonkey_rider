@@ -35,9 +35,9 @@ public class RequestActivity extends AppCompatActivity {
 
         //탭레이아웃
         tabs=findViewById(R.id.request_tab);
-        fragment1=new RequestFragment();
-        fragment2=new OngoingFragment();
-        fragment3=new CompleteFragment();
+        fragment1=new RequestWorkFragment();
+        fragment2=new ApprovingFragment();
+        fragment3=new AcceptRequestFragment();
 
         getSupportFragmentManager().beginTransaction().add(R.id.frame1,fragment1).commit();
 
