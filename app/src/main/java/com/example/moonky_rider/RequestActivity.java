@@ -17,7 +17,7 @@ public class RequestActivity extends AppCompatActivity {
 
     //탭레이아웃
     private TabLayout tabs;
-    private Fragment fragment1,fragment2,fragment3;
+    private Fragment fragment1, fragment3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +36,7 @@ public class RequestActivity extends AppCompatActivity {
         //탭레이아웃
         tabs=findViewById(R.id.request_tab);
         fragment1=new RequestWorkFragment();
-        fragment2=new ApprovingFragment();
+        //fragment2=new ApprovingFragment();
         fragment3=new AcceptRequestFragment();
 
         getSupportFragmentManager().beginTransaction().add(R.id.frame1,fragment1).commit();
@@ -50,10 +50,7 @@ public class RequestActivity extends AppCompatActivity {
                 if(position==0){
                     selected=fragment1;
                 }
-                else if(position==1){
-                    selected=fragment2;
-                }
-                else if(position==2){
+                else {
                     selected=fragment3;
                 }
 
