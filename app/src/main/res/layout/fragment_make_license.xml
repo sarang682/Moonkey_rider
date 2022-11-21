@@ -78,6 +78,7 @@
                 android:layout_weight="700">
 
                 <EditText
+                    android:id="@+id/attached_picture"
                     android:background="@drawable/modify_edit"
                     android:layout_width="wrap_content"
                     android:layout_height="35dp"
@@ -95,6 +96,7 @@
                 android:layout_weight="400">
 
                 <Button
+                    android:id="@+id/picture_file"
                     android:text="첨부하기"
                     android:layout_width="60dp"
                     android:layout_height="35dp" />
@@ -112,6 +114,7 @@
             android:weightSum="1440">
 
             <EditText
+                android:id="@+id/license_num"
                 android:hint="면허증인 경우 번호를 입력해 주세요.(-제외)"
                 android:paddingLeft="10dp"
                 android:layout_width="0dp"
@@ -131,6 +134,7 @@
             android:weightSum="1440">
 
             <EditText
+                android:id="@+id/date"
                 android:hint="발급 일자를 입력해주세요.(예_20221019)"
                 android:paddingLeft="10dp"
                 android:layout_width="0dp"
@@ -172,7 +176,7 @@
                 android:layout_weight="700">
 
                 <EditText
-                    android:id="@+id/attached_logo_file"
+                    android:id="@+id/attached_bankbook"
                     android:background="@drawable/modify_edit"
                     android:layout_width="wrap_content"
                     android:layout_height="35dp"
@@ -190,6 +194,7 @@
                 android:layout_weight="400">
 
                 <Button
+                    android:id="@+id/bankbook_file"
                     android:text="찾아보기"
                     android:layout_width="60dp"
                     android:layout_height="35dp" />
@@ -228,7 +233,7 @@
                 android:layout_weight="700">
 
                 <EditText
-                    android:id="@+id/store_address"
+                    android:id="@+id/attached_insure"
                     android:background="@drawable/modify_edit"
                     android:layout_width="wrap_content"
                     android:layout_height="35dp"
@@ -246,6 +251,7 @@
                 android:layout_weight="400">
 
                 <Button
+                    android:id="@+id/insurance_file"
                     android:text="첨부하기"
                     android:layout_width="60dp"
                     android:layout_height="35dp" />
