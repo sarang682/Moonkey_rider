@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private NestedScrollView nestedScrollView;
     private LinearLayout linearLayout;
 
-    private ImageView openDrawer, modify, license,history, accept, question;
+    private ImageView openDrawer, modify, license,history, accept, question, setting;
     private Button logout;
     private TextView address, text_color;
     Switch sw;
@@ -234,6 +234,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, QuestionActivity.class);
+                startActivity(intent);
+            }
+        });
+        
+        //환경 설정
+        setting=findViewById(R.id.setting);
+        question.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, SettingActivity.class);
                 startActivity(intent);
             }
         });
