@@ -29,7 +29,7 @@ public class StoreListView extends LinearLayout {
         inflater.inflate(R.layout.view_storelist, this, true);
         text_price = (TextView) findViewById(R.id.store_price);
         text_name = (TextView) findViewById(R.id.store_name);
-        text_comment=(TextView) findViewById(R.id.store_address);
+        //text_comment=(TextView) findViewById(R.id.store_address);
     }
     public void setName(String name) {
         text_name.setText(name);
