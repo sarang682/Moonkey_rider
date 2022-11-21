@@ -240,7 +240,7 @@ public class MainActivity extends AppCompatActivity {
         
         //환경 설정
         setting=findViewById(R.id.setting);
-        question.setOnClickListener(new View.OnClickListener() {
+        setting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, SettingActivity.class);
