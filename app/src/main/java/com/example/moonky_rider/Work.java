@@ -1,4 +1,4 @@
-package com.example.moongky_rider;
+package com.example.moonky_rider;
 
 public class Work {
     private String date; //승인요청일자

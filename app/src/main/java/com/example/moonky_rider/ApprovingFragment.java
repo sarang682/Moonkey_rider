@@ -1,4 +1,4 @@
-package com.example.moongky_rider;
+package com.example.moonky_rider;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
