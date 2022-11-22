@@ -25,7 +25,7 @@ public class EditAccountActivity extends AppCompatActivity {
 
         //아이디 입력이 필요한가?
 
-        ID=findViewById(R.id.modify_id);
+        //ID=findViewById(R.id.modify_id);
         NickName=findViewById(R.id.modify_nickname);
         Phone=findViewById(R.id.modify_phoneNum);
         currentPW=findViewById(R.id.modify_currently_pw_edit);
