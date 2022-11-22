@@ -870,7 +870,17 @@
                     android:textSize="12sp" />
             </LinearLayout>
         </ScrollView>
-    </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ll_left_area"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
 
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp" />
+        </LinearLayout>
+        
+    </LinearLayout>
 
 </androidx.drawerlayout.widget.DrawerLayout>
