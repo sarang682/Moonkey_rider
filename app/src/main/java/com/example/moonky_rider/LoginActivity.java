@@ -168,8 +168,10 @@ public class LoginActivity extends AppCompatActivity {
             e.printStackTrace();
         } finally {
             if(responseCode==200){
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                startActivity(intent);
+//                startActivity(intent);
+//                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                call_list();
+
             }else{
                 Toast.makeText (LoginActivity.this, "로그인에 실패하였습니다.", Toast.LENGTH_SHORT).show();
             }

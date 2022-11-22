@@ -18,6 +18,7 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<Store> items = new ArrayList<Store>();
     private NestedScrollView nestedScrollView;
     private LinearLayout linearLayout;
+    private ArrayList<Delivery> deliveries;
 
     private ImageView openDrawer, modify, license,history, accept, question,img_addr;
     private Button logout;
@@ -73,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         //정보 받아오기
         Intent intent=getIntent();
         int length=Integer.parseInt(intent.getStringExtra("length"));
-        ArrayList<Delivery> deliveries= (ArrayList<Delivery>) intent.getSerializableExtra("list");
+        deliveries= (ArrayList<Delivery>) intent.getSerializableExtra("list");
         ///////////////////
 
         address=findViewById(R.id.tv_address);
@@ -97,6 +99,10 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //탭레이아웃
+        Bundle bundle=new Bundle();
+        bundle.putSerializable("list", deliveries);
+        fragment1.setArguments(bundle);
+
         tabs=findViewById(R.id.home_tab);
         fragment1=new RequestFragment();
         fragment2=new OngoingFragment();
@@ -112,12 +118,15 @@ public class MainActivity extends AppCompatActivity {
                 int position=tab.getPosition();
                 if(position==0){
                     selected=fragment1;
+                    fragment1.setArguments(bundle);
                 }
                 else if(position==1){
                     selected=fragment2;
+                    fragment2.setArguments(bundle);
                 }
                 else if(position==2){
                     selected=fragment3;
+                    fragment3.setArguments(bundle);
                 }
 
                 getSupportFragmentManager().beginTransaction().replace(R.id.frame,selected).commit();

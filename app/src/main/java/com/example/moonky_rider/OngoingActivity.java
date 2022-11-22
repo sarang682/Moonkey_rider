@@ -31,27 +31,27 @@ public class OngoingActivity extends AppCompatActivity {
         call_store=findViewById(R.id.call_store);
         call_customer=findViewById(R.id.call_customer);
 
-        tv_fee.setText(Integer.toString(item.getFee())+"원");
-        tv_destination.setText(item.getDestination());
-        tv_store.setText(item.getStore());
-        tv_address.setText(item.getAddress());
-        tv_requested.setText(item.getRequested());
-        tv_cphone.setText(item.getC_phone());
-        tv_sphone.setText(item.getS_phone());
+//        tv_fee.setText(Integer.toString(item.getFee())+"원");
+//        tv_destination.setText(item.getDestination());
+//        tv_store.setText(item.getStore());
+//        tv_address.setText(item.getAddress());
+//        tv_requested.setText(item.getRequested());
+//        tv_cphone.setText(item.getC_phone());
+//        tv_sphone.setText(item.getS_phone());
 
         call_store.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent tt = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+item.getS_phone()));
-                startActivity(tt);
+//                Intent tt = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+item.getS_phone()));
+//                startActivity(tt);
             }
         });
 
         call_customer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent tt = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+item.getC_phone()));
-                startActivity(tt);
+//                Intent tt = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+item.getC_phone()));
+//                startActivity(tt);
             }
         });
     }

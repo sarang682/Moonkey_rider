@@ -1,5 +1,11 @@
 package com.example.moonky_rider;
 
+import android.os.Build;
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.RequiresApi;
+
 import java.io.Serializable;
 
 public class Delivery implements Serializable {
@@ -28,6 +34,34 @@ public class Delivery implements Serializable {
         this.total_pay = total_pay;
         this.delivery_check = delivery_check;
     }
+
+//    protected Delivery(Parcel in) {
+//        delivery_id = in.readLong();
+//        address = in.readString();
+//        call_check = in.readByte() != 0;
+//        distance = in.readInt();
+//        pay = in.readInt();
+//        requests = in.readString();
+//        order_id = in.readLong();
+//        store_id = in.readLong();
+//        uid = in.readLong();
+//        total_pay = in.readLong();
+//        delivery_check = in.readByte() != 0;
+//    }
+//
+//    public static final Creator<Delivery> CREATOR=new Creator<Delivery>() {
+//        @Override
+//        public Delivery createFromParcel(Parcel in) {
+//            return new Delivery(in);
+//        }
+//
+//        @Override
+//        public Delivery[] newArray(int size) {
+//            return new Delivery[size];
+//        }
+//    };
+
+
 
     public long getDelivery_id() {
         return delivery_id;
@@ -116,5 +150,26 @@ public class Delivery implements Serializable {
     public void setDelivery_check(boolean delivery_check) {
         this.delivery_check = delivery_check;
     }
+
+//    @Override
+//    public int describeContents() {
+//        return 0;
+//    }
+//
+//    @RequiresApi(api = Build.VERSION_CODES.Q)
+//    @Override
+//    public void writeToParcel(Parcel dest, int flags) {
+//        dest.writeLong(delivery_id);
+//        dest.writeString(address);
+//        dest.writeBoolean(call_check);
+//        dest.writeInt(distance);
+//        dest.writeInt(pay);
+//        dest.writeString(requests);
+//        dest.writeLong(order_id);
+//        dest.writeLong(store_id);
+//        dest.writeLong(uid);
+//        dest.writeLong(total_pay);
+//        dest.writeBoolean(delivery_check);
+//    }
 }
 
