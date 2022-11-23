@@ -2,6 +2,7 @@ package com.example.moonky_rider;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -10,15 +11,14 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-/*
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-*/
 
 public class JoinActivity extends AppCompatActivity {
 
@@ -28,7 +28,7 @@ public class JoinActivity extends AppCompatActivity {
     //ServiceApi serviceApi;
 
     //    private static String IP_ADDRESS = "http://165.229.86.152";
-    private static String IP_ADDRESS = "http://165.229.86.152:9501";
+//    private static String IP_ADDRESS = "http://165.229.86.152:9501";
 
 
     @Override
@@ -47,7 +47,7 @@ public class JoinActivity extends AppCompatActivity {
 
         watch1=findViewById(R.id.watch_btn1); //이용약관보기
         watch2=findViewById(R.id.watch_btn2); //개인정보보기
-                
+
 
         id_check=findViewById(R.id.id_check);
         //아이디확인 리스너
@@ -90,6 +90,7 @@ public class JoinActivity extends AppCompatActivity {
 
 //                                         join();
                                     //join(new JoinData(id,pw,phone,addr,nickname,0));
+                                    join(id,pw,phone,addr,nickname,2);
                                     Toast.makeText(getApplicationContext(), "회원가입 성공", Toast.LENGTH_LONG).show();
                                     Intent intent = new Intent(JoinActivity.this, LoginActivity.class);
                                     startActivity(intent);
@@ -152,35 +153,96 @@ public class JoinActivity extends AppCompatActivity {
         else return true;
     }
 
-    private void join(){
 
-    }
 
-    /*private void join(JoinData data) {
+    private void join(String id, String password, String phone, String addr, String nickname,int flag) {
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
 
-        serviceApi=RetrofitClient.getClient().create(ServiceApi.class);
-        serviceApi.userJoin(data).enqueue(new Callback<JoinResponse>() {
-            @Override
-            public void onResponse(Call<JoinResponse> call, Response<JoinResponse> response) {
-                JoinResponse result = response.body();
-                //서버로부터의 응답을 위에서 정의한 JoinResponse객체에 담는다.
-//                Toast.makeText(JoinActivity.this, result.getMessage(), Toast.LENGTH_SHORT).show();
-                // getMessage를 통해 성공시 서버로부터 회원가입 성공이라는 메시지를 받음
-                if(result.getStatus() == 200) {
-                    Log.e("completee","completee");
-                    finish();  //getStatus로 받아온 코드가 200(OK)면 회원가입 프래그먼트 종료
+        //http 요청 시 필요한 url 주소를 변수 선언
+        String totalUrl = "";
+        String UrlData = "http://165.229.86.152:8293/app/usr/reg";
+        totalUrl = UrlData.trim().toString();
+
+        //http 통신을 하기위한 객체 선언 실시
+        URL url = null;
+        HttpURLConnection conn = null;
+
+        //http 통신 요청 후 응답 받은 데이터를 담기 위한 변수
+        String responseData = "";
+        BufferedReader br = null;
+        StringBuffer sb = null;
+
+        //메소드 호출 결과값을 반환하기 위한 변수
+        String returnData = "";
+        int responseCode=0;
+
+        String data="{ \"id\" : \"" +id+ "\", \"password\" :\""+password+"\" ,\"phone\" : \""+phone+"\", \"addr\" : \""+addr+"\", \"nickname\" : \""+nickname+"\" , \"flag\" : 2 }";
+
+
+        try {
+            //파라미터로 들어온 url을 사용해 connection 실시
+            url = new URL(totalUrl);
+            conn = (HttpURLConnection) url.openConnection();
+
+            //http 요청에 필요한 타입 정의 실시
+            conn.setRequestMethod("POST");
+//            conn.setRequestProperty("Content-Type", "application/json"); //post body json으로 던지기 위함
+            conn.setRequestProperty("Content-Type", "application/json; utf-8"); //post body json으로 던지기 위함
+            conn.setRequestProperty("Accept", "application/json");
+            conn.setDoOutput(true); //OutputStream을 사용해서 post body 데이터 전송
+            try (OutputStream os = conn.getOutputStream()){
+                byte request_data[] = data.getBytes("utf-8");
+                os.write(request_data);
+                os.close();
+            }
+            catch(Exception e) {
+                e.printStackTrace();
+            }
+
+            //http 요청 실시
+            conn.connect();
+            System.out.println("http 요청 방식 : "+"POST BODY JSON");
+            System.out.println("http 요청 타입 : "+"application/json");
+            System.out.println("http 요청 주소 : "+UrlData);
+            System.out.println("http 요청 데이터 : "+data);
+            System.out.println("");
+
+            //http 요청 후 응답 받은 데이터를 버퍼에 쌓는다
+            br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
+            sb = new StringBuffer();
+            while ((responseData = br.readLine()) != null) {
+                sb.append(responseData); //StringBuffer에 응답받은 데이터 순차적으로 저장 실시
+            }
+
+            //메소드 호출 완료 시 반환하는 변수에 버퍼 데이터 삽입 실시
+            returnData = sb.toString();
+
+            //http 요청 응답 코드 확인 실시
+//            String responseCode = String.valueOf(conn.getResponseCode());
+            responseCode = conn.getResponseCode();
+            System.out.println("http 응답 코드 : "+responseCode);
+            System.out.println("http 응답 데이터 : "+returnData);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if(responseCode==200){
+                Intent intent = new Intent(JoinActivity.this, MainActivity.class);
+                startActivity(intent);
+            }else{
+                Toast.makeText (JoinActivity.this, "회원가입에 실패하였습니다.", Toast.LENGTH_SHORT).show();
+            }
+            //http 요청 및 응답 완료 후 BufferedReader를 닫아줍니다
+            try {
+                if (br != null) {
+                    br.close();
                 }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-
-            @Override
-            public void onFailure(Call<JoinResponse> call, Throwable t) {
-                Toast.makeText(JoinActivity.this, "Sign up Error", Toast.LENGTH_SHORT).show();
-                Log.e("Sign up Error", t.getMessage());
-                t.printStackTrace();
-            }
-        });
-
-    }*/
+        }
+    }
 
 
 }

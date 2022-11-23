@@ -38,10 +38,10 @@ public class OngoingFragment extends Fragment {
 
         items = new ArrayList<Delivery>();
         //목적지 요금(int) 가게이름 가게주소
-        items.add(new Delivery("유성구 초록아파트 1123동",6000,"오천사치킨","대구 신매동","문앞에 두고 문자해주세요","01012345678","01098765432"));
-        items.add(new Delivery("수성구 욱수동 파랑아파트 123동 111호",8000,"bbq","대구 사월동 123","문앞에 두고 문자해주세요","01012345678","01098765432"));
-        items.add(new Delivery("수성구 사월동 한일유앤 111동~~",10000,"떡볶이집","주소","문앞에 두고 문자해주세요","01012345678","01098765432"));
-        items.add(new Delivery("진행중-배달지 주소",20000,"진행중-가게이름","진행중-주소","문앞에 두고 문자해주세요","01012345678","01098765432"));
+//        items.add(new Delivery("유성구 초록아파트 1123동",6000,"오천사치킨","대구 신매동","문앞에 두고 문자해주세요","01012345678","01098765432"));
+//        items.add(new Delivery("수성구 욱수동 파랑아파트 123동 111호",8000,"bbq","대구 사월동 123","문앞에 두고 문자해주세요","01012345678","01098765432"));
+//        items.add(new Delivery("수성구 사월동 한일유앤 111동~~",10000,"떡볶이집","주소","문앞에 두고 문자해주세요","01012345678","01098765432"));
+//        items.add(new Delivery("진행중-배달지 주소",20000,"진행중-가게이름","진행중-주소","문앞에 두고 문자해주세요","01012345678","01098765432"));
         adapter=new OngoingFragment.Adapter(items);
         listView.setAdapter(adapter);
 
@@ -96,8 +96,8 @@ public class OngoingFragment extends Fragment {
             }
 
             Delivery item = items.get(position);
-            view.setText_fee(Integer.toString(item.getFee()));
-            view.setText_destination(item.getDestination());
+            view.setText_fee(Integer.toString(item.getPay()));
+            view.setText_destination(item.getAddress());
             return view;
         }
     }
