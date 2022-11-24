@@ -48,7 +48,7 @@ public class AcceptActivity extends AppCompatActivity {
         call_store.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent tt = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+phone));
+                Intent tt = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+store.getContact()));
                 startActivity(tt);
             }
         });

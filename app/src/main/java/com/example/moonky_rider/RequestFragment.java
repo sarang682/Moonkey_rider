@@ -59,7 +59,6 @@ public class RequestFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 Delivery item=(Delivery) adapter.getItem(position);
-//                Toast.makeText(getActivity().getApplicationContext(), item.getAddress(), Toast.LENGTH_SHORT).show();
                 get_store(item);
             }
         });
