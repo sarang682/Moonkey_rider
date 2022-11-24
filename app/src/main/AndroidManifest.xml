@@ -63,6 +63,29 @@
             android:exported="true" >
 
         </activity>
+        
+        <activity 
+                  android:name=".MakeLicenseActivity"
+                  android:exported="true" />
+        <activity 
+                  android:name=".RequestActivity2"
+                  android:exported="true" />
+        <activity 
+                  android:name=".SettingActivity"
+                  android:exported="true" />
+        <activity 
+                  android:name=".UnregisterActivity"
+                  android:exported="true" />
+        <activity 
+                  android:name=".Watch1Activity"
+                  android:exported="true" />
+        <activity 
+                  android:name=".Watch2Activity"
+                  android:exported="true" />
+        <activity android:name=".DelAccountActivity"/>
+        <activity android:name=".DeliveryDetailActivity"/>
+        <activity android:name=".LicenseListActivity"/>
+        
     </application>
 
 </manifest>
