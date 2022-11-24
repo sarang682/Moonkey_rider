@@ -1,48 +1,32 @@
 package com.example.moonky_rider;
 
-public class Store {
 
-    private String name;
-    private int store_id;
-    private int price;
-    private int number;
-    private String address;
-    private String destination;
+import java.io.Serializable;
 
-    public Store(int price, int number, int store_id, String name, String address, String destination) {
-        this.price = price;
-        this.number = number;
+public class Store implements Serializable {
+
+    private String storeId; //가게 id
+    private String name; //가게 이름
+    private String address; // 주소
+    private String description; //설명
+    private String category; //카테고리
+    private String contact; //연락처
+
+    public Store(String storeId, String name, String address, String description, String category, String contact) {
+        this.storeId = storeId;
         this.name = name;
         this.address = address;
-        this.store_id = store_id;
-        this.destination = destination;
+        this.description = description;
+        this.category = category;
+        this.contact = contact;
     }
 
-    public Store(int price, String name, String address) {
-        this.price = price;
-        this.name = name;
-        this.address = address;
+    public String getStoreId() {
+        return storeId;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-    public int getPrice() { return price; }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
-    public int getNumber() {
-        return number;
-    }
-
-    public void setNumber(int number) {
-        this.number = number;
+    public void setStoreId(String storeId) {
+        this.storeId = storeId;
     }
 
     public String getName() {
@@ -53,12 +37,36 @@ public class Store {
         this.name = name;
     }
 
-
-    public int getStore_id() {
-        return store_id;
+    public String getAddress() {
+        return address;
     }
 
-    public void setStore_id(int store_id) {
-        this.store_id = store_id;
+    public void setAddress(String address) {
+        this.address = address;
     }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getContact() {
+        return contact;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact;
+    }
+
 }

@@ -82,9 +82,7 @@
         <activity 
                   android:name=".Watch2Activity"
                   android:exported="true" />
-        <activity android:name=".DelAccountActivity"/>
-        <activity android:name=".DeliveryDetailActivity"/>
-        <activity android:name=".LicenseListActivity"/>
+
         
     </application>
 

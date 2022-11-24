@@ -8,6 +8,7 @@ import androidx.core.content.ContextCompat;
 import androidx.core.widget.NestedScrollView;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.Manifest;
 import android.content.DialogInterface;
@@ -92,16 +93,23 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //탭레이아웃
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+
+        fragment1 = new RequestFragment();
+        transaction.replace(R.id.frame, fragment1);
+        transaction.commit();
+
         Bundle bundle = new Bundle();
+        bundle.putSerializable("list", request_list);
 //        bundle.putSerializable("list", deliveries);
-//        fragment1.setArguments(bundle);
+        fragment1.setArguments(bundle);
 
         tabs = findViewById(R.id.home_tab);
-        fragment1 = new RequestFragment();
+
         fragment2 = new OngoingFragment();
         fragment3 = new CompleteFragment();
 
-//        getSupportFragmentManager().beginTransaction().add(R.id.frame, fragment1).commit();
+
 
         tabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
