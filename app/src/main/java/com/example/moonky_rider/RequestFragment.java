@@ -29,8 +29,6 @@ public class RequestFragment extends Fragment {
         setHasOptionsMenu(true);
         View v=inflater.inflate(R.layout.fragment_request, container, false);
         listView=v.findViewById(R.id.request_lv);
-        Bundle bundle=getArguments();
-        deliveries= (ArrayList<Delivery>) bundle.getSerializable("list");
         return v;
     }
 
@@ -39,6 +37,8 @@ public class RequestFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        Bundle bundle=getArguments();
+        deliveries= (ArrayList<Delivery>) bundle.getSerializable("list");
         adapter=new RequestFragment.Adapter(deliveries);
         //목적지 요금(int) 가게이름 가게주소
 //        items.add(new Delivery("경상북도 대동 133",6000,"오천사치킨","대구 신매동","문앞에 두고 문자해주세요","01012345678","01098765432"));

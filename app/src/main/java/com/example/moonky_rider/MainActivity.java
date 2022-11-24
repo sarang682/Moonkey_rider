@@ -47,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
     private Button logout;
     private TextView address, text_color,tv_addr;
     Switch sw;
-    private ArrayList<Delivery> deliveries;
 
     //탭레이아웃
     private TabLayout tabs;
@@ -71,9 +70,10 @@ public class MainActivity extends AppCompatActivity {
         //정보 받아오기
         Intent intent = getIntent();
         int length = Integer.parseInt(intent.getStringExtra("length"));
-        deliveries = (ArrayList<Delivery>) intent.getSerializableExtra("list");
+        ArrayList<Delivery> request_list = (ArrayList<Delivery>) intent.getSerializableExtra("request_list");
+        ArrayList<Delivery> ongoing_list = (ArrayList<Delivery>) intent.getSerializableExtra("ongoing_list");
+        ArrayList<Delivery> complete_list = (ArrayList<Delivery>) intent.getSerializableExtra("complete_list");
         ///////////////////
-
         address = findViewById(R.id.tv_address);
 
         //스위치(운행중/운행종료)
@@ -93,15 +93,15 @@ public class MainActivity extends AppCompatActivity {
 
         //탭레이아웃
         Bundle bundle = new Bundle();
-        bundle.putSerializable("list", deliveries);
-        fragment1.setArguments(bundle);
+//        bundle.putSerializable("list", deliveries);
+//        fragment1.setArguments(bundle);
 
         tabs = findViewById(R.id.home_tab);
         fragment1 = new RequestFragment();
         fragment2 = new OngoingFragment();
         fragment3 = new CompleteFragment();
 
-        getSupportFragmentManager().beginTransaction().add(R.id.frame, fragment1).commit();
+//        getSupportFragmentManager().beginTransaction().add(R.id.frame, fragment1).commit();
 
         tabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -111,12 +111,15 @@ public class MainActivity extends AppCompatActivity {
                 int position = tab.getPosition();
                 if (position == 0) {
                     selected = fragment1;
+                    bundle.putSerializable("list", request_list);
                     fragment1.setArguments(bundle);
                 } else if (position == 1) {
                     selected = fragment2;
+                    bundle.putSerializable("list", ongoing_list);
                     fragment2.setArguments(bundle);
                 } else if (position == 2) {
                     selected = fragment3;
+                    bundle.putSerializable("list", complete_list);
                     fragment3.setArguments(bundle);
                 }
 
@@ -150,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
 
         license = findViewById(R.id.my_licenses);
         history = findViewById(R.id.history);
-        accept = findViewById(R.id.acceptriding);
+        accept = findViewById(R.id.accept);
 
         question = findViewById(R.id.question);
 

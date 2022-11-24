@@ -35,8 +35,8 @@ public class OngoingFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        items = new ArrayList<Delivery>();
+        Bundle bundle=getArguments();
+        items = (ArrayList<Delivery>) bundle.getSerializable("list");
         //목적지 요금(int) 가게이름 가게주소
 //        items.add(new Delivery("유성구 초록아파트 1123동",6000,"오천사치킨","대구 신매동","문앞에 두고 문자해주세요","01012345678","01098765432"));
 //        items.add(new Delivery("수성구 욱수동 파랑아파트 123동 111호",8000,"bbq","대구 사월동 123","문앞에 두고 문자해주세요","01012345678","01098765432"));

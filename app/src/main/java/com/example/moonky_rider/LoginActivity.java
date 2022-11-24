@@ -242,36 +242,41 @@ public class LoginActivity extends AppCompatActivity {
             returnData = sb.toString();
 
             //returnData를 json형식으로
-            ArrayList<Delivery> list = new ArrayList<Delivery>();
-
+            ArrayList<Delivery> request_list = new ArrayList<Delivery>();
+            ArrayList<Delivery> ongoing_list = new ArrayList<Delivery>();
+            ArrayList<Delivery> complete_list = new ArrayList<Delivery>();
             try {
                 JSONArray jsonArray = new JSONArray(returnData);
 
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject JsonObject = jsonArray.getJSONObject(i);
-                    long delivery_id = JsonObject.getLong("delivery_id");
+                    long delivery_id = JsonObject.getLong("deliveryId");
                     String address = JsonObject.getString("address");
-                    boolean call_check=JsonObject.getBoolean("call_check");
+                    boolean call_check=JsonObject.getBoolean("callCheck");
                     int distance = JsonObject.getInt("distance");
                     int pay=JsonObject.getInt("pay");
                     String requests=JsonObject.getString("requests");
-                    long order_id = JsonObject.getLong("order_id");
-                    long store_id = JsonObject.getLong("store_id");
+                    long order_id = JsonObject.getLong("orderId");
+                    long store_id = JsonObject.getLong("storeId");
                     long uid=JsonObject.getLong("uid");
-                    long total_pay=JsonObject.getLong("total_pay");
-                    boolean delivery_check=JsonObject.getBoolean("delivery_check");
+//                    long total_pay=JsonObject.getLong("totalPay");
+                    boolean delivery_check=JsonObject.getBoolean("deliveryCheck");
 
+                    if(!call_check&&!delivery_check)
+                        request_list.add(new Delivery(delivery_id,address,call_check,distance,pay,requests,order_id,store_id,uid,0,delivery_check));
+                    else if(call_check&&!delivery_check)
+                        ongoing_list.add(new Delivery(delivery_id,address,call_check,distance,pay,requests,order_id,store_id,uid,0,delivery_check));
+                    else if(call_check&&delivery_check)
+                        complete_list.add(new Delivery(delivery_id,address,call_check,distance,pay,requests,order_id,store_id,uid,0,delivery_check));
 
-//                    System.out.println("menuId: " + menuId +
-//                            "menuName: " + menuName + "\n");
-
-                    list.add(new Delivery(delivery_id,address,call_check,distance,pay,requests,order_id,store_id,uid,total_pay,delivery_check));
                 }
 
 //                System.out.println("main에서 출력 : " + list.get(0).getMenuName());
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 intent.putExtra("length", Integer.toString(jsonArray.length()));
-                intent.putExtra("list", list);
+                intent.putExtra("request_list", request_list);
+                intent.putExtra("ongoing_list", ongoing_list);
+                intent.putExtra("complete_list", complete_list);
                 startActivity(intent);
 
 

@@ -34,7 +34,8 @@ public class CompleteFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        items = new ArrayList<Delivery>();
+        Bundle bundle=getArguments();
+        items = (ArrayList<Delivery>) bundle.getSerializable("list");
         adapter=new CompleteFragment.Adapter(items);
         //목적지 요금(int) 가게이름 가게주소
 //        items.add(new Delivery("완료-목적지",6000,"완료-가게이름","완료-출발지","문앞에 두고 문자해주세요","01012345678","01098765432"));
