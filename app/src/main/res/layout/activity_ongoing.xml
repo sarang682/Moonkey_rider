@@ -450,5 +450,22 @@
                 android:onClick="onClick" />
 
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/delivery_complete"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
+                android:text="배송 완료"
+                android:textSize="7pt"
+                android:onClick="onClick" />
+
+        </LinearLayout>
+        
     </LinearLayout>
 </LinearLayout>
